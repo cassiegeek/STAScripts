@@ -1,0 +1,19 @@
+// Create variables
+DiceArray = Array(1);
+Source Array = [];
+// Create input dialog box;
+DiceNumber = Dialog.prompt({title: Challenge Dice, content: '<label>How many dice?</label>' <input type = "text" placeholder = 'Enter Value'></input>, label: 'Roll!'});
+// Create dice roll and evaluate
+SourceRoll = new Roll(DiceNumber + 'd6');
+await SourceRoll.roll();
+// Create array from the rolled dice;
+SourceArray = SourceRoll.dice;
+// create an array of arrays sorted by number;
+for (let i = 1; i < 7; i++) {
+tempfilter = SourceArray.filter(function(ele) {return ele == i;});
+DiceArray.push(tempfilter);};
+// Tally effects and successes;
+Effects = DiceArray[5].length + DiceArray[6].length;
+Successes = Effects + DiceArray[1].length + 2 * DiceArray[2].length;
+//Send result to chat window;
+ChatMessage.create({content: 'Successes: " + Successes + '<br>Effects: ' + Effects});
